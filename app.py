@@ -1,7 +1,7 @@
 import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
-from lib.macros import bedtime
+from macros import bedtime
 
 app = dash.Dash()
 
