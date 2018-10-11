@@ -12,6 +12,13 @@ app.layout = html.Div([
 ])
 
 
+external_css = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css']
+
+for css in external_css:
+    app.css.append_css({"external_url": css})
+
+
 @app.callback(
     Output(component_id='placeholder', component_property='children'),
     [Input('bedtime_button', 'n_clicks')]
@@ -27,5 +34,5 @@ def update_output_div(n_clicks):
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
-    # app.run_server()
+    # app.run_server(host='0.0.0.0')
+    app.run_server()
