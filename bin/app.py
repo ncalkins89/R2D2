@@ -1,6 +1,5 @@
 import dash
-from dash.dependencies import Input, Output, State
-import dash_core_components as dcc
+from dash.dependencies import Input, Output
 import dash_html_components as html
 from lib.macros import bedtime
 
@@ -23,5 +22,5 @@ def update_output_div(n_clicks):
 
 
 if __name__ == '__main__':
-    # app.run_server(host='0.0.0.0')
-    app.run_server()
+    app.run_server(host='0.0.0.0')
+    # app.run_server()
