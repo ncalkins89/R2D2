@@ -6,7 +6,7 @@ from macros import bedtime
 app = dash.Dash()
 
 app.layout = html.Div([
-    html.Button('Click Me', id='button'),
+    html.Button('bedtime', id='bedtime_button'),
     html.Div(id='my-div'),
     html.P(id='placeholder')
 ])
@@ -14,7 +14,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output(component_id='placeholder', component_property='children'),
-    [Input('button', 'n_clicks')]
+    [Input('bedtime_button', 'n_clicks')]
 )
 def update_output_div(n_clicks):
     # callback executes on server startup unless use n_clicks filter
