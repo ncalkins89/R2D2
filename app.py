@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 from macros import bedtime
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Button('bedtime', id='bedtime_button'),
@@ -12,11 +12,11 @@ app.layout = html.Div([
 ])
 
 
-external_css = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-                'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css']
-
-for css in external_css:
-    app.css.append_css({"external_url": css})
+# external_css = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+#                 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css']
+#
+# for css in external_css:
+#     app.css.append_css({"external_url": css})
 
 
 @app.callback(
