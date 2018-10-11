@@ -17,7 +17,10 @@ app.layout = html.Div([
     [Input('button', 'n_clicks')]
 )
 def update_output_div(n_clicks):
-    bedtime()
+    # callback executes on server startup unless use n_clicks > 0 filter
+    if n_clicks > 0:
+        bedtime()
+    # callback forces an output, so returning None to placeholder paragraph
     return None
 
 
