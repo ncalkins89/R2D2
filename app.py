@@ -1,7 +1,14 @@
+import argparse
 import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
 from macros import bedtime
+
+# use optional command line arg to toggle between local and remote server
+# default to local
+parser = argparse.ArgumentParser()
+parser.add_argument('--remote', help='Run server remotely.  Otherwise, runs locally.', action='store_true')
+args = parser.parse_args()
 
 app = dash.Dash(__name__)
 
@@ -35,5 +42,7 @@ def update_output_div(n_clicks):
 
 
 if __name__ == '__main__':
-    # app.run_server(host='0.0.0.0')
-    app.run_server()
+    if args.remote:
+        app.run_server(host='0.0.0.0')
+    else:
+        app.run_server()
