@@ -2,7 +2,7 @@ import argparse
 import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
-from macros import bedtime
+import macros
 
 # use optional command line arg to toggle between local and remote server
 # default to local
@@ -27,16 +27,22 @@ app.layout = html.Div([
 #     app.css.append_css({"external_url": css})
 
 
-@app.callback(
-    Output(component_id='placeholder', component_property='children'),
-    [Input('bedtime_button', 'n_clicks')]
-)
-def update_output_div(n_clicks):
+# tying a callback to a button requires testing n_clicks, passing if None, otherwise running a function,
+# and then returning None.  click_button() generalizes this
+def click_button(n_clicks, action):
     # callback executes on server startup unless use n_clicks filter
     if n_clicks is None:
         pass
     else:
-        bedtime()
+        action()
+
+
+@app.callback(
+    Output(component_id='placeholder', component_property='children'),
+    [Input('bedtime_button', 'n_clicks')]
+)
+def bedtime_button_click(n_clicks, action=macros.bedtime):
+    click_button(n_clicks, action)
     # callback forces an output, so returning None to placeholder paragraph
     return None
 
