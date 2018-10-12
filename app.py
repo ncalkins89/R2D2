@@ -7,7 +7,8 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Button('bedtime', id='bedtime_button'),
-    html.Div(id='my-div'),
+    html.Div(className='divider'),
+    html.Button('turn everything off', id='everything_off_button'),
     html.P(id='placeholder')
 ])
 
@@ -34,5 +35,5 @@ def update_output_div(n_clicks):
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
-    # app.run_server()
+    # app.run_server(host='0.0.0.0')
+    app.run_server()
