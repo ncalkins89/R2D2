@@ -36,12 +36,25 @@ def click_button(n_clicks, action):
     else:
         action()
 
+# TODO: generalize this better.  Probably could use a dictinary that maps to a function or something so that each
+# button button id maps to a specific function.  Or build my own class for this.
+
 
 @app.callback(
     Output(component_id='placeholder', component_property='children'),
     [Input('bedtime_button', 'n_clicks')]
 )
 def bedtime_button_click(n_clicks, action=macros.bedtime):
+    click_button(n_clicks, action)
+    # callback forces an output, so returning None to placeholder paragraph
+    return None
+
+
+@app.callback(
+    Output(component_id='placeholder', component_property='children'),
+    [Input('everything_off_button', 'n_clicks')]
+)
+def everything_off_button_click(n_clicks, action=macros.turn_everything_off):
     click_button(n_clicks, action)
     # callback forces an output, so returning None to placeholder paragraph
     return None
