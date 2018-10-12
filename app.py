@@ -16,7 +16,9 @@ app.layout = html.Div([
     html.Button('bedtime', id='bedtime_button'),
     html.Div(className='divider'),
     html.Button('turn everything off', id='everything_off_button'),
-    html.P(id='placeholder')
+    # placeholders...apparently need one for each callback :(
+    html.P(id='placeholder1'),
+    html.P(id='placeholder2')
 ])
 
 
@@ -41,7 +43,7 @@ def click_button(n_clicks, action):
 
 
 @app.callback(
-    Output(component_id='placeholder', component_property='children'),
+    Output(component_id='placeholder1', component_property='children'),
     [Input('bedtime_button', 'n_clicks')]
 )
 def bedtime_button_click(n_clicks, action=macros.bedtime):
@@ -51,7 +53,7 @@ def bedtime_button_click(n_clicks, action=macros.bedtime):
 
 
 @app.callback(
-    Output(component_id='placeholder', component_property='children'),
+    Output(component_id='placeholder2', component_property='children'),
     [Input('everything_off_button', 'n_clicks')]
 )
 def everything_off_button_click(n_clicks, action=macros.turn_everything_off):
