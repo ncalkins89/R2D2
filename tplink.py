@@ -18,3 +18,7 @@ def toggle_plug_state(plug):
         plug.turn_off()
     elif plug.state == 'OFF':
         plug.turn_on()
+
+
+def toggle_subwoofer():
+    toggle_plug_state(subwoofer)
