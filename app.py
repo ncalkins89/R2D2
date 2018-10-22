@@ -17,7 +17,7 @@ button_config = {
     },
     'toggle_subwoofer_button': {
         'name': 'toggle subwoofer on/off',
-        'action': tplink.toggle_plug_state(tplink.subwoofer)
+        'action': tplink.toggle_subwoofer
     }
 }
 
