@@ -7,20 +7,20 @@ import tplink
 from collections import OrderedDict
 
 # configure buttons.  id to name and action
-button_config = OrderedDict({
-    'bedtime_button': {
+button_config = OrderedDict([
+    ('bedtime_button', {
         'name': 'bedtime',
         'action': macros.bedtime
-    },
-    'everything_off_button': {
+    }),
+    ('everything_off_button', {
         'name': 'turn everything off',
         'action': macros.turn_everything_off
-    },
-    'toggle_subwoofer_button': {
+    }),
+    ('toggle_subwoofer_button', {
         'name': 'toggle subwoofer on/off',
         'action': tplink.toggle_subwoofer
-    }
-})
+    })
+])
 
 # add placeholders for output components
 for (i, (k, v)) in enumerate(button_config.items()):
