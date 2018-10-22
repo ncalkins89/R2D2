@@ -13,4 +13,4 @@ def turn_everything_off():
 
 def bedtime():
     turn_everything_off()
-    hue.turn_on_nightlight()
+    hue.turn_on_master_bedroom_night_scene()
