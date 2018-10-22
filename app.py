@@ -4,9 +4,10 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 import macros
 import tplink
+from collections import OrderedDict
 
 # configure buttons.  id to name and action
-button_config = {
+button_config = OrderedDict({
     'bedtime_button': {
         'name': 'bedtime',
         'action': macros.bedtime
@@ -19,7 +20,7 @@ button_config = {
         'name': 'toggle subwoofer on/off',
         'action': tplink.toggle_subwoofer
     }
-}
+})
 
 # add placeholders for output components
 for (i, (k, v)) in enumerate(button_config.items()):
