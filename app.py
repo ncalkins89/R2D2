@@ -3,6 +3,7 @@ import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
 import macros
+import tplink
 
 # configure buttons.  id to name and action
 button_config = {
@@ -11,8 +12,12 @@ button_config = {
         'action': macros.bedtime
     },
     'everything_off_button': {
-        'name': 'turn_everything_off',
+        'name': 'turn everything off',
         'action': macros.turn_everything_off
+    },
+    'toggle_subwoofer_button': {
+        'name': 'toggle subwoofer on/off',
+        'action': tplink.toggle_plug_state(tplink.subwoofer)
     }
 }
 
@@ -55,6 +60,8 @@ def click_button(n_clicks, action):
         action()
 
 
+# to create dynamic callbacks.
+# see: https://stackoverflow.com/questions/13184281/python-dynamic-function-creation-with-custom-names
 def create_callback(button_id, attributes):
     @app.callback(
         Output(component_id=attributes['output_component_id'], component_property='children'),
@@ -71,97 +78,6 @@ def create_callback(button_id, attributes):
 
 for (k, v) in button_config.items():
     callback = create_callback(button_id=k, attributes=v)
-
-
-
-# @app.callback(
-#     Output(component_id='placeholder1', component_property='children'),
-#     [Input('everything_off_button', 'n_clicks')]
-# )
-# def everything_off_button_click(n_clicks, action=macros.turn_everything_off):
-#     click_button(n_clicks, action)
-#     # callback forces an output, so returning None to placeholder paragraph
-#     return None
-
-
-# def bindFunction1(name):
-#     def func1(*args):
-#         for arg in args:
-#             print arg
-#         return 42 # ...
-#     func1.__name__ = name
-#     return func1
-
-
-
-
-
-
-
-
-########################################################################3
-# app.layout = html.Div([
-#     html.Button('bedtime', id='bedtime_button'),
-#     html.Div(className='divider'),
-#     html.Button('turn everything off', id='everything_off_button'),
-#     # placeholders...apparently need one for each callback :(
-#     html.P(id='placeholder1'),
-#     html.P(id='placeholder2')
-# ])
-#
-#
-# # external_css = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-# #                 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css']
-# #
-# # for css in external_css:
-# #     app.css.append_css({"external_url": css})
-#
-#
-# # tying a callback to a button requires testing n_clicks, passing if None, otherwise running a function,
-# # and then returning None.  click_button() generalizes this
-# def click_button(n_clicks, action):
-#     # callback executes on server startup unless use n_clicks filter
-#     if n_clicks is None:
-#         pass
-#     else:
-#         action()
-#
-# # TODO: generalize this better.  Probably could use a dictinary that maps to a function or something so that each
-# # button button id maps to a specific function.  Or build my own class for this.
-#
-#
-# # class Button:
-# #     def __init__(self, name, action, output_placeholder_id):
-# #         self.name = name
-# #         self.action = action
-# #         self.output_placeholder_id = output_placeholder_id
-# #     def click(self):
-#
-#
-#
-#
-# @app.callback(
-#     Output(component_id='placeholder1', component_property='children'),
-#     [Input('bedtime_button', 'n_clicks')]
-# )
-# def bedtime_button_click(n_clicks, action=macros.bedtime):
-#     click_button(n_clicks, action)
-#     # callback forces an output, so returning None to placeholder paragraph
-#     return None
-#
-#
-# @app.callback(
-#     Output(component_id='placeholder2', component_property='children'),
-#     [Input('everything_off_button', 'n_clicks')]
-# )
-# def everything_off_button_click(n_clicks, action=macros.turn_everything_off):
-#     click_button(n_clicks, action)
-#     # callback forces an output, so returning None to placeholder paragraph
-#     return None
-########################################################################3
-
-
-
 
 
 if __name__ == '__main__':
