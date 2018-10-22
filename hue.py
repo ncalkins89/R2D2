@@ -1,9 +1,15 @@
 import requests
+import json
+
+# TODO: refactor first two functions below to use these configurations
+ip = '192.168.0.2'
+username = 'UCZMnJgAGzu5iDVeItDw03m3wU-YPspQtJvgyz0R'
+api_root = 'http://{}/api/{}'.format(ip, username)
 
 
 def turn_off_all_lights():
     turn_off = '{"on":false}'
-    all_light_group = "http://192.168.0.2/api/UCZMnJgAGzu5iDVeItDw03m3wU-YPspQtJvgyz0R/groups/0/action"
+    all_light_group = api_root + '/groups/0/action'
     requests.put(all_light_group, turn_off)
 
 
@@ -24,3 +30,14 @@ def turn_on_nightlight():
     '"xy": [0.6024, 0.3198]'\
     '}'
     resp = requests.put(act, body)
+    print(resp.content)
+
+
+def turn_on_scene(scene_id):
+    # useful: https://stackoverflow.com/questions/16356810/string-format-a-json-string-gives-keyerror
+    resp = requests.put(url='/'.join([api_root, 'groups', '0', 'action']), data=json.dumps(dict(scene=scene_id)))
+    print(resp.content)
+
+
+def turn_on_master_bedroom_night_scene():
+    turn_on_scene(scene_id='i04J1E5ZO2ryl59')
