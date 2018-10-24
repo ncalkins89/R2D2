@@ -22,7 +22,11 @@ button_config = OrderedDict([
     }),
     ('home_theater_on_button', {
         'name': 'Home Theater: On',
-        'action': tplink.toggle_subwoofer
+        'action': macros.home_theater_on()
+    }),
+    ('home_theater_off_button', {
+        'name': 'Home Theater: Off',
+        'action': macros.home_theater_on()
     })
 ])
 
