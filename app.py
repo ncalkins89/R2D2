@@ -41,15 +41,11 @@ args = parser.parse_args()
 
 app = dash.Dash(__name__)
 
-button_layout = []
-# layout part 1: alternate button and divider.  TODO:  figure how out to do with a list comprehension
-for (k, v) in button_config.items():
-    button_layout.append(html.P(html.Button(v['name'], id=k)))
-    # button_layout.append(html.Div(className='divider'))
-
+# layout part 1: the buttons, each in its own paragraph
+button_layout = [html.P(html.Button(v['name'], id=k)) for (k, v) in button_config.items()]
 # layout part 2: placeholders...apparently need one for each callback even if output not needed
 placeholder_layout = [html.P(id=v['output_component_id']) for k, v in button_config.items()]
-
+# combine
 app.layout = html.Div(button_layout + placeholder_layout)
 
 # external_css = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
