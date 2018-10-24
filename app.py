@@ -13,7 +13,7 @@ button_config = OrderedDict([
         'action': macros.bedtime
     }),
     ('everything_off_button', {
-        'name': 'Turn Everything Off',
+        'name': 'House: Off',
         'action': macros.turn_everything_off
     }),
     ('toggle_subwoofer_button', {
@@ -22,11 +22,11 @@ button_config = OrderedDict([
     }),
     ('home_theater_on_button', {
         'name': 'Home Theater: On',
-        'action': macros.home_theater_on()
+        'action': macros.home_theater_on
     }),
     ('home_theater_off_button', {
         'name': 'Home Theater: Off',
-        'action': macros.home_theater_on()
+        'action': macros.home_theater_on
     })
 ])
 
