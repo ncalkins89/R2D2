@@ -9,15 +9,19 @@ from collections import OrderedDict
 # configure buttons.  id to name and action
 button_config = OrderedDict([
     ('bedtime_button', {
-        'name': 'bedtime',
+        'name': 'Bedtime',
         'action': macros.bedtime
     }),
     ('everything_off_button', {
-        'name': 'turn everything off',
+        'name': 'Turn Everything Off',
         'action': macros.turn_everything_off
     }),
     ('toggle_subwoofer_button', {
-        'name': 'toggle subwoofer on/off',
+        'name': 'Subwoofer: On/Off',
+        'action': tplink.toggle_subwoofer
+    }),
+    ('home_theater_on_button', {
+        'name': 'Home Theater: On',
         'action': tplink.toggle_subwoofer
     })
 ])
