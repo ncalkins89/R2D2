@@ -19,8 +19,10 @@ def bedtime():
 def home_theater_on():
     harmony.home_theater_on()
     tplink.subwoofer.turn_on()
+    # TODO: add WOL after adding ethernet cable, or figuring out wireless
 
 
 def home_theater_off():
     harmony.turn_off_current_activity()
     tplink.subwoofer.turn_off()
+    pc.remote_shutdown_desktop()
