@@ -26,7 +26,7 @@ button_config = OrderedDict([
     }),
     ('home_theater_off_button', {
         'name': 'Home Theater: Off',
-        'action': macros.home_theater_on
+        'action': macros.home_theater_off
     })
 ])
 
