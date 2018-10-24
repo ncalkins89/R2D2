@@ -44,8 +44,8 @@ app = dash.Dash(__name__)
 button_layout = []
 # layout part 1: alternate button and divider.  TODO:  figure how out to do with a list comprehension
 for (k, v) in button_config.items():
-    button_layout.append(html.Button(v['name'], id=k))
-    button_layout.append(html.Div(className='divider'))
+    button_layout.append(html.P(html.Button(v['name'], id=k)))
+    # button_layout.append(html.Div(className='divider'))
 
 # layout part 2: placeholders...apparently need one for each callback even if output not needed
 placeholder_layout = [html.P(id=v['output_component_id']) for k, v in button_config.items()]
