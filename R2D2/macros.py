@@ -1,7 +1,4 @@
-import hue
-import tplink
-
-from R2D2.platforms import harmony, pc
+from R2D2.platforms import hue, tplink, harmony, pc
 
 
 def turn_everything_off():

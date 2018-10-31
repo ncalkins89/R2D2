@@ -4,29 +4,30 @@ import dash_html_components as html
 from collections import OrderedDict
 from dash.dependencies import Input, Output
 
-import R2D2.platforms.tplink
+from R2D2.platforms import tplink
+from R2D2.macros import bedtime, turn_everything_off, home_theater_on, home_theater_off
 
 # configure buttons.  id to name and action
 button_config = OrderedDict([
     ('bedtime_button', {
         'name': 'Bedtime',
-        'action': R2D2.macros.bedtime
+        'action': bedtime
     }),
     ('everything_off_button', {
         'name': 'House: Off',
-        'action': R2D2.macros.turn_everything_off
+        'action': turn_everything_off
     }),
     ('toggle_subwoofer_button', {
         'name': 'Subwoofer: On/Off',
-        'action': R2D2.platforms.tplink.toggle_subwoofer
+        'action': tplink.toggle_subwoofer
     }),
     ('home_theater_on_button', {
         'name': 'Home Theater: On',
-        'action': R2D2.macros.home_theater_on
+        'action': home_theater_on
     }),
     ('home_theater_off_button', {
         'name': 'Home Theater: Off',
-        'action': R2D2.macros.home_theater_off
+        'action': home_theater_off
     })
 ])
 

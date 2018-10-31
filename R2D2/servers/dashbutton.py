@@ -1,10 +1,9 @@
 from pydhcplib.dhcp_network import *
-
-import R2D2.platforms.hue
+from R2D2.platforms import hue
 
 
 def front_door():
-    R2D2.platforms.hue.toggle_living_room()
+    hue.toggle_living_room()
 
 
 class Server(DhcpServer):
