@@ -1,11 +1,12 @@
 import argparse
+from collections import OrderedDict
+
 import dash
 import dash_html_components as html
-from collections import OrderedDict
 from dash.dependencies import Input, Output
 
 from R2D2.platforms import tplink
-from R2D2.macros import bedtime, turn_everything_off, home_theater_on, home_theater_off
+from R2D2.platforms.macros import bedtime, turn_everything_off, home_theater_on, home_theater_off
 
 # configure buttons.  id to name and action
 button_config = OrderedDict([
