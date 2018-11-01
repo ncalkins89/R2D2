@@ -5,8 +5,9 @@ import dash
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from R2D2.platforms import tplink
+from R2D2.platforms import tplink, hue
 from R2D2.platforms.macros import bedtime, turn_everything_off, home_theater_on, home_theater_off
+
 
 # configure buttons.  id to name and action
 button_config = OrderedDict([
@@ -29,6 +30,11 @@ button_config = OrderedDict([
     ('home_theater_off_button', {
         'name': 'Home Theater: Off',
         'action': home_theater_off
+    })
+    ,
+    ('house_nightlight_button', {
+        'name': 'House Nightlight: On',
+        'action': hue.turn_on_house_nightlight
     })
 ])
 
