@@ -1,6 +1,8 @@
 import requests
 import json
+import pandas as pd
 
+# TODO: check out phue...
 # TODO: refactor first two functions below to use these configurations
 ip = '192.168.0.2'
 username = 'UCZMnJgAGzu5iDVeItDw03m3wU-YPspQtJvgyz0R'
@@ -27,7 +29,7 @@ def turn_on_scene(scene_id):
     print(resp.content)
 
 
-def turn_on_master_bedroom_night_scene():
+def turn_on_master_bedroom_nightlight():
     turn_on_scene(scene_id='i04J1E5ZO2ryl59')
 
 
@@ -38,6 +40,25 @@ def toggle_living_room():
     else:
         requests.put(_endpoint(['groups', '3', 'action']), payloads['turn_on'])
 
+
+def turn_on_house_nightlight():
+    # living room nightlight
+    turn_on_scene('VYV8Ob3xJ4Wi3Wd')
+    # kitchen nightlight
+    turn_on_scene('3a6e0KXlql5OwUS')
+
+
+def pretty_print(json):
+    df = pd.DataFrame(json).transpose()
+    print(df)
+    df.to_clipboard()
+
+
+# json = requests.get(_endpoint(['scenes'])).json()
+# pretty_print(json)
+#
+# json = requests.get(_endpoint(['groups'])).json()
+# pretty_print(json)
 
 # def turn_on_nightlight():
 #     ip = '192.168.0.2'
