@@ -1,6 +1,6 @@
 import requests
 import json
-import pandas as pd
+# import pandas as pd
 
 # TODO: check out phue...
 # TODO: refactor first two functions below to use these configurations
@@ -48,10 +48,10 @@ def turn_on_house_nightlight():
     turn_on_scene('3a6e0KXlql5OwUS')
 
 
-def pretty_print(json):
-    df = pd.DataFrame(json).transpose()
-    print(df)
-    df.to_clipboard()
+# def pretty_print(json):
+#     df = pd.DataFrame(json).transpose()
+#     print(df)
+#     df.to_clipboard()
 
 
 # json = requests.get(_endpoint(['scenes'])).json()
