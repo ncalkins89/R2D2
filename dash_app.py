@@ -5,7 +5,7 @@ import dash
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from R2D2.platforms import tplink, hue
+from R2D2.platforms import tplink, hue, pc
 from R2D2.platforms.macros import bedtime, turn_everything_off, home_theater_on, home_theater_off
 
 
@@ -13,27 +13,39 @@ from R2D2.platforms.macros import bedtime, turn_everything_off, home_theater_on,
 button_config = OrderedDict([
     ('bedtime_button', {
         'name': 'Bedtime',
+        'className': 'macro_button',
         'action': bedtime
     }),
     ('everything_off_button', {
         'name': 'House: Off',
+        'className': 'off_button',
         'action': turn_everything_off
     }),
     ('toggle_subwoofer_button', {
         'name': 'Subwoofer: On/Off',
+        'className': 'toggle_button',
         'action': tplink.toggle_subwoofer
     }),
     ('home_theater_on_button', {
         'name': 'Home Theater: On',
+        'className': 'on_button',
         'action': home_theater_on
     }),
     ('home_theater_off_button', {
         'name': 'Home Theater: Off',
+        'className': 'off_button',
         'action': home_theater_off
+    })
+    ,
+    ('pc_off_button', {
+        'name': 'PC: Off',
+        'className': 'off_button',
+        'action': pc.remote_shutdown_desktop
     })
     ,
     ('house_nightlight_button', {
         'name': 'House Nightlight: On',
+        'className': 'on_button',
         'action': hue.turn_on_house_nightlight
     })
 ])
@@ -50,7 +62,7 @@ args = parser.parse_args()
 app = dash.Dash(__name__)
 
 # layout part 1: the buttons, each in its own paragraph
-button_layout = [html.P(html.Button(v['name'], id=k)) for (k, v) in button_config.items()]
+button_layout = [html.P(html.Button(v['name'], id=k, className=v['className'])) for (k, v) in button_config.items()]
 # layout part 2: placeholders...apparently need one for each callback even if output not needed
 placeholder_layout = [html.P(id=v['output_component_id']) for k, v in button_config.items()]
 # combine
