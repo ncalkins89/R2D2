@@ -1,24 +1,25 @@
-/*
-
 .off_button {
-   background-color: red;
+   border: 2px solid red;
 }
 
 .on_button {
-   background-color: green;
+   border: 2px solid green;
 }
 
 .toggle_button {
-   background-color: grey;
+   border: 2px solid grey;
 }
 
 .macro_button {
-   background-color: blue;
+   border: 2px solid blue;
 }
 
-*/
-
-button {font-size: 72px;}
+button {
+    font-size: 72px;
+    /* width: 100vw; */
+    white-space: normal;
+    /* border-radius: 25%; */
+}
 
 .divider{
     width:50px;
