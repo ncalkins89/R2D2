@@ -1,4 +1,19 @@
-/* #bedtime_button {font-size: 72px;} */
+.off_button {
+   background-color: red;
+}
+
+.on_button {
+   background-color: green;
+}
+
+.toggle_button {
+   background-color: grey;
+}
+
+.macro_button {
+   background-color: blue;
+}
+
 button {font-size: 72px;}
 
 .divider{
