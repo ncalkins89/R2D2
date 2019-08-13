@@ -10,7 +10,9 @@ api_root = 'http://{}/api/{}'.format(ip, username)
 
 payloads = {
     'turn_on': json.dumps({'on': True}),
-    'turn_off': json.dumps({'on': False})
+    'turn_off': json.dumps({'on': False}),
+    'enabled': json.dumps({'status': 'enabled'}),
+    'disabled': json.dumps({'status': 'disabled'})
 }
 
 
@@ -28,7 +30,6 @@ def turn_on_scene(scene_id):
     resp = requests.put(url='/'.join([api_root, 'groups', '0', 'action']), data=json.dumps(dict(scene=scene_id)))
     print(resp.content)
 
-
 def turn_on_master_bedroom_nightlight():
     turn_on_scene(scene_id='i04J1E5ZO2ryl59')
 
@@ -40,12 +41,20 @@ def toggle_living_room():
     else:
         requests.put(_endpoint(['groups', '3', 'action']), payloads['turn_on'])
 
+def turn_off_living_room():
+     requests.put(_endpoint(['groups', '3', 'action']), payloads['turn_off'])
 
 def turn_on_house_nightlight():
     # living room nightlight
     turn_on_scene('VYV8Ob3xJ4Wi3Wd')
     # kitchen nightlight
     turn_on_scene('3a6e0KXlql5OwUS')
+
+def vacation_mode_enable():
+    requests.put(_endpoint(['schedules', '9']), payloads['enabled'])
+
+def vacation_mode_disable():
+    requests.put(_endpoint(['schedules', '9']), payloads['disabled'])
 
 
 # def pretty_print(json):
@@ -78,3 +87,5 @@ def turn_on_house_nightlight():
 #     '}'
 #     resp = requests.put(act, body)
 #     print(resp.content)
+
+

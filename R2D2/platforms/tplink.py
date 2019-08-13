@@ -11,7 +11,7 @@ from pyHS100 import SmartPlug
 # subwoofer.state
 
 subwoofer = SmartPlug('192.168.0.23')
-
+backyard = SmartPlug('192.168.0.6')
 
 def toggle_plug_state(plug):
     if plug.state == 'ON':
@@ -22,3 +22,4 @@ def toggle_plug_state(plug):
 
 def toggle_subwoofer():
     toggle_plug_state(subwoofer)
+

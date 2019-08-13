@@ -4,12 +4,17 @@ from R2D2.platforms import hue, tplink, harmony, pc
 def turn_everything_off():
     harmony.turn_off_current_activity()
     tplink.subwoofer.turn_off()
+    tplink.backyard.turn_off()
     hue.turn_off_all_lights()
     pc.remote_shutdown_desktop()
 
-
 def bedtime():
-    turn_everything_off()
+    # need to fix harmony api with firmware update 
+    # harmony.turn_off_current_activity()
+    tplink.subwoofer.turn_off()
+    tplink.backyard.turn_off()
+    # liv room off, kitchen off, front porch on 
+    # later: turn off pc, when fixed
     hue.turn_on_master_bedroom_nightlight()
 
 
